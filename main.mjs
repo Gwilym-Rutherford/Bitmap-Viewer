@@ -1,7 +1,7 @@
 import fs from "fs";
 import { BitmapStructure } from "./BitmapStructure.mjs";
 
-fs.readFile("./checkers_test_2.bmp", "hex", (err, data)=>{
+fs.readFile("./blackbuck.bmp", "hex", (err, data)=>{
     if(err){
         console.log("there seems to be an error with your file");
         process.exit(1);

@@ -1,4 +1,5 @@
-import { getData } from "./hexParser.mjs";
+import { BitmapStructure } from "./BitmapStructure.mjs";
+import { getData, rasterDataToRgb, removePadding } from "./hexParser.mjs";
 
 const inputtedImage = document.getElementById("imageInput");
 
@@ -22,11 +23,21 @@ inputtedImage.addEventListener("change", (event)=>{
 
 fileReader.onloadend = ()=>{
     const canvas = document.getElementById("viewer");
+    const ctx = canvas.getContext("2d");
     canvas.width = imageData.Width.data;
     canvas.height = imageData.Height.data;
     
-    const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "blue";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+    let pixelData = rasterDataToRgb(removePadding(BitmapStructure.RasterData));
+    let rowOffset = canvas.height;
+    pixelData.forEach((pixel, index) => {
+        ctx.fillStyle = "#" + pixel;
+        
+        if((index % canvas.width) == 0){
+            rowOffset--;
+        }
+
+        ctx.fillRect(index % canvas.width, rowOffset, 1, 1);
+    });
+    document.getElementById("hexData").innerText = imageData.RasterData;
 }
 

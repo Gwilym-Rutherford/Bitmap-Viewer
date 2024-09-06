@@ -1,5 +1,5 @@
-import { BitmapStructure } from "./BitmapStructure.mjs";
-import { convertToBigEndian, getRasterData } from "./helper.mjs";
+import { BitmapStructure } from "./bitmapStructure.js";
+import { convertToBigEndian, getRasterData } from "./helper.js";
 
 export function getData(rawHexData){
     let keys = Object.keys(BitmapStructure);

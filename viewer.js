@@ -1,5 +1,5 @@
-import { BitmapStructure } from "./BitmapStructure.mjs";
-import { getData, rasterDataToRgb, removePadding } from "./hexParser.mjs";
+import { BitmapStructure } from "./bitmapStructure.js";
+import { getData, rasterDataToRgb, removePadding } from "./hexParser.js";
 
 const inputtedImage = document.getElementById("imageInput");
 
